@@ -7,8 +7,8 @@ export
     # hmc sampling
     hamiltonianMC
 
-using Distributions
-using Parameters: @with_kw, @unpack
+using Distributions, LinearAlgebra
+import ForwardDiff
 
 include("hamiltonianMC.jl")
 
