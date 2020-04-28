@@ -11,11 +11,11 @@ Return a new position of q.
 function hamiltonianMC(ℒ, ϵ, L, q⁰::T
     ) where {T<:AbstractVecOrMat{<:AbstractFloat}}
 
-    q = copy(q⁰)
     # first draw a momentum from a Standard Multivariate Normal
-    p = rand(MvNormal(size(q, 1), 1))
-    # store current p
-    p⁰ = copy(p)
+    p⁰ = rand(MvNormal(size(q, 1), 1))
+    # do not change the current p, q
+    q = copy(q⁰)
+    p = copy(p⁰)
 
     # then apply L leapfrog steps to get a proposal of the new position and momentum
     q, p = leapfrog(ℒ, ϵ, L, p, q)
