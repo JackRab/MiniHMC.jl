@@ -12,7 +12,7 @@ function hamiltonianMC(ℒ, ϵ, L, q⁰::T
     ) where {T<:AbstractVecOrMat{<:AbstractFloat}}
 
     # first draw a momentum from a Standard Multivariate Normal
-    p⁰ = rand(MvNormal(size(q, 1), 1))
+    p⁰ = rand(MvNormal(size(q⁰, 1), 1))
     # do not change the current p, q
     q = copy(q⁰)
     p = copy(p⁰)
