@@ -1,4 +1,7 @@
-# implemente a Hamiltonian Monte carlo
+# implemente a simple(naive) Hamiltonian Monte carlo
+# Reference: Neal-2011,
+#            Hoffman, M. D., & Gelman, A. (2014),
+#            Betancourt, M. (2017)
 
 """
 Perform Hamiltonian Monte Carlo with hand-tuning ϵ and L.
@@ -46,6 +49,7 @@ Perform leapfrog of L steps. Based on Neal-2011.
 Return a new position/momentum of q/p.
 """
 function leapfrog(ℒ, ϵ, L, p, q)
+    @argcheck L>=1 "Error: Leapfrog steps at least be 1"
     q, p = copy(q), copy(p)
 
     # first make a half step for momentum
